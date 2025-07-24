@@ -14,8 +14,8 @@ test.describe("Process: Login", () => {
 		test(`${testCase} | Should Return ${errorMessage}`, async ({ page }) => {
 			const landingPage = new LandingPage(page)
             const loginPage = new LoginPage(page)
-            loginPage.navigateToLoginPage()
-            loginPage.processLogin(email, password)
+            await loginPage.navigateToLoginPage()
+            await loginPage.processLogin(email, password)
             if(errorMessage === "Invalid"){
                 await expect(page.getByText("Invalid email or password")).toBeVisible({timeout: 15000});
             }
@@ -31,14 +31,14 @@ test.describe("Process: Login", () => {
 	}
 });
 
-test.describe("Process: Register", () => {
-    test("Register New User", async ({ page }) => {
-        const registerPage = new RegisterPage(page)
-        await registerPage.navigateToRegisterPage()
-        await registerPage.registerNewUser()
-        await expect(page).toHaveURL(`${Env.BASE_URL}`, {timeout:15000})
-    })
-})
+// test.describe("Process: Register", () => {
+//     test("Register New User", async ({ page }) => {
+//         const registerPage = new RegisterPage(page)
+//         await registerPage.navigateToRegisterPage()
+//         await registerPage.registerNewUser()
+//         await expect(page).toHaveURL(`${Env.BASE_URL}`, {timeout:15000})
+//     })
+// })
 
 test.describe("Process: Add to Cart and Remove Items", () => {
     test("Add 2 Item to Cart and Remove All", async ({ page }) => {

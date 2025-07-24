@@ -24,7 +24,7 @@ export class ProductPage extends BasePage {
 
     async addDummyItem2(){
         const currentUrl = this.page.url()
-        console.log(currentUrl)
+        // console.log(currentUrl)
         await this.page.locator("//img[@alt='Nizza trefoil shoes']").click()
         await this.page.waitForFunction((url) => window.location.href !== url, currentUrl)
         await expect(this.page.getByText("Nizza trefoil shoes")).toHaveCount(2)

@@ -12,9 +12,9 @@ export class LoginPage  extends BasePage{
 	}
 
 	async processLogin(email: string, password: string){
-		await this.inputEmail.click()
+		// await this.inputEmail.click()
 		await this.inputEmail.fill(email)
-		await this.inputPassword.click()
+		// await this.inputPassword.click()
 		await this.inputPassword.fill(password)
 		await this.signInButton.click()
 	}
